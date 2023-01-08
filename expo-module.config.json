@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["CustomAlarmSoundsModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.customalarmsounds.CustomAlarmSoundsModule"]
+  }
+}
