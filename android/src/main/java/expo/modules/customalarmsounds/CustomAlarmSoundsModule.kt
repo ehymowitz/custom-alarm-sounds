@@ -22,8 +22,8 @@ class CustomAlarmSoundsModule : Module() {
     Events("onChange")
 
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+    Function("test") {
+      "Test"
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code
@@ -35,13 +35,5 @@ class CustomAlarmSoundsModule : Module() {
       ))
     }
 
-    // Enables the module to be used as a native view. Definition components that are accepted as part of
-    // the view definition: Prop, Events.
-    View(CustomAlarmSoundsView::class) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { view: CustomAlarmSoundsView, prop: String ->
-        println(prop)
-      }
-    }
   }
 }
