@@ -1,5 +1,5 @@
 import CustomAlarmSoundsModule from "./CustomAlarmSoundsModule";
 
-export function setAlarm(): string {
+export function setAlarm(): void {
   return CustomAlarmSoundsModule.setAlarm();
 }

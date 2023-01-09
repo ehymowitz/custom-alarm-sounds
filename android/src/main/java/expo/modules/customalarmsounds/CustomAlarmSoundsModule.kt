@@ -22,7 +22,7 @@ class CustomAlarmSoundsModule : Module() {
   private val context
   get() = requireNotNull(appContext.reactContext)
 
-  private fun createAlarm(): String {
+  private fun createAlarm() {
     val intent: Intent = Intent(AlarmClock.ACTION_SET_ALARM);
     intent.putExtra(AlarmClock.EXTRA_HOUR, 1);
     intent.putExtra(AlarmClock.EXTRA_MINUTES, 1);
@@ -32,7 +32,5 @@ class CustomAlarmSoundsModule : Module() {
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
     context.startActivity(intent);
-
-    return "TEST"
   }
 }
