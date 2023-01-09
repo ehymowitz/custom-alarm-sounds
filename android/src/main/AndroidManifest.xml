@@ -1,2 +1,3 @@
-<manifest package="expo.modules.customalarmsounds">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="expo.modules.customalarmsounds">
+  <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 </manifest>

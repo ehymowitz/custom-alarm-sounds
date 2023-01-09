@@ -22,8 +22,6 @@ class CustomAlarmSoundsModule : Module() {
   private val context
   get() = requireNotNull(appContext.reactContext)
 
-  private fun requestAlarmPermissions() {}
-
   private fun createAlarm(): String {
     val intent: Intent = Intent(AlarmClock.ACTION_SET_ALARM);
     intent.putExtra(AlarmClock.EXTRA_HOUR, 1);
