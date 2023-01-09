@@ -1,10 +1,14 @@
 import * as CustomAlarmSounds from "custom-alarm-sounds";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 
 export default function App() {
+  const setAlarm = () => {
+    console.log(CustomAlarmSounds.setAlarm());
+  };
+
   return (
     <View style={styles.container}>
-      <Text>{CustomAlarmSounds.test()}</Text>
+      <Button onPress={setAlarm} title="set alarm" />
     </View>
   );
 }

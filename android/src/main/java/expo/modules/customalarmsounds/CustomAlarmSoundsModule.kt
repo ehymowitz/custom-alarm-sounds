@@ -3,37 +3,38 @@ package expo.modules.customalarmsounds
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
+import android.provider.AlarmClock
+import android.app.AlarmManager
+import android.content.Intent
+import android.content.Context
+
+import android.provider.Settings
+
 class CustomAlarmSoundsModule : Module() {
-  // Each module class must implement the definition function. The definition consists of components
-  // that describes the module's functionality and behavior.
-  // See https://docs.expo.dev/modules/module-api for more details about available components.
-  override fun definition() = ModuleDefinition {
-    // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
-    // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
-    // The module will be accessible from `requireNativeModule('CustomAlarmSounds')` in JavaScript.
+    override fun definition() = ModuleDefinition {
     Name("CustomAlarmSounds")
 
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants(
-      "PI" to Math.PI
-    )
-
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
-
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("test") {
-      "Test"
+    Function ("setAlarm") {
+      return@Function createAlarm()
     }
+  }
 
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { value: String ->
-      // Send an event to JavaScript.
-      sendEvent("onChange", mapOf(
-        "value" to value
-      ))
-    }
+  private val context
+  get() = requireNotNull(appContext.reactContext)
 
+  private fun requestAlarmPermissions() {}
+
+  private fun createAlarm(): String {
+    val intent: Intent = Intent(AlarmClock.ACTION_SET_ALARM);
+    intent.putExtra(AlarmClock.EXTRA_HOUR, 1);
+    intent.putExtra(AlarmClock.EXTRA_MINUTES, 1);
+
+    intent.putExtra(AlarmClock.EXTRA_MESSAGE, "test alarm");
+
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+    context.startActivity(intent);
+
+    return "TEST"
   }
 }
