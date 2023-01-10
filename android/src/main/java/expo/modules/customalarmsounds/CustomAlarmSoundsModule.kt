@@ -14,20 +14,20 @@ class CustomAlarmSoundsModule : Module() {
     override fun definition() = ModuleDefinition {
     Name("CustomAlarmSounds")
 
-    Function ("setAlarm") {
-      return@Function createAlarm()
+    Function ("setAlarm") { hour: Int, minute: Int, artist: String, url: String ->
+      return@Function createAlarm(hour, minute, artist, url)
     }
   }
 
   private val context
   get() = requireNotNull(appContext.reactContext)
 
-  private fun createAlarm() {
+  private fun createAlarm(hour: Int, minute: Int, artist: String, uri: String) {
     val intent: Intent = Intent(AlarmClock.ACTION_SET_ALARM);
-    intent.putExtra(AlarmClock.EXTRA_HOUR, 1);
-    intent.putExtra(AlarmClock.EXTRA_MINUTES, 1);
-
-    intent.putExtra(AlarmClock.EXTRA_MESSAGE, "test alarm");
+    intent.putExtra(AlarmClock.EXTRA_HOUR, hour);
+    intent.putExtra(AlarmClock.EXTRA_MINUTES, minute);
+    intent.putExtra(AlarmClock.EXTRA_MESSAGE, artist);
+    intent.putExtra(AlarmClock.EXTRA_RINGTONE, uri);
 
     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

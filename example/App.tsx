@@ -3,7 +3,7 @@ import { Button, StyleSheet, View } from "react-native";
 
 export default function App() {
   const setAlarm = () => {
-    CustomAlarmSounds.setAlarm();
+    CustomAlarmSounds.setAlarm(1, 2, "artist-name", "alarm-location");
   };
 
   return (
